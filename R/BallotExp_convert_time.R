@@ -1,9 +1,9 @@
 # ##############################################################################
 #' Computing survey duration time for the ballot experiment data
 #'
-#' @param start.var 
-#' @param end.var
-#' @param data
+#' @param start.var The variable name for the start time measure.
+#' @param end.var The variable name for the end time measure.
+#' @param data The name of the data.
 #' @return A list with the computed duration and start/end time measures
 #'         in the POSIX class.
 # ---------------------------------------------------------------------------- #
