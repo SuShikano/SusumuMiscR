@@ -1,6 +1,5 @@
-# rasch.estimate
 # ##############################################################################
-#' Esatimateion of Rasch models
+#' Estimation of Rasch models
 #'
 #' @param Y Data matrix, with observations in row and items in column
 #' @return An object with the data matrix, JAGS output object, identified item difficulty and latent variables
