@@ -5,8 +5,8 @@
 #' @param n.sim
 #' @param sample.size
 #' @param statistic
-#' @return A list with the computed duration and start/end time measures
-#'         in the POSIX class.
+#' @return A list with the estimated mean, variance and confidence intervals. 
+#'         The list also includes the collected statistic values.
 # ---------------------------------------------------------------------------- #
 bootstr <- function(x=NULL,
                      n.sim = 1000,
