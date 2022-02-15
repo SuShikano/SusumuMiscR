@@ -17,10 +17,10 @@ be.sort.round <- function(to.be.sorted=NULL,
   if (is.null(to.be.sorted)) stop("Input the variable name to be sorted.")
   if (length(order.var) !=3) stop("order.var has the length of 3.")
   if (is.null(data)) {
-    original.mat <- to.be.sorted
+    original.mat <- as.matrix(to.be.sorted)
     round.order <- as.matrix(order.var)
   }else{
-    original.mat <- data[,to.be.sorted]
+    original.mat <- as.matrix(data[,to.be.sorted])
     round.order <- as.matrix(data[,order.var])
   }
   
