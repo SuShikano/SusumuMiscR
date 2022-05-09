@@ -17,7 +17,7 @@
 #' @param ylab Label for the y-axis.
 #' @param axes Logical. If FALSE, no axes appear. Defalt is TRUE.
 #' @param main Title over the figure.
-#' @param pch Type of dotts. Default is 20.
+#' @param pch Type of dots. Default is 20.
 #' @param ci.col Color of confidence intervals. Default is grey(.7).
 #' @param dot.col Color of dots. Default is black.
 #' @param ci.percent The percentage for the confindence intervals.
@@ -42,6 +42,7 @@ scatter.ci <- function(x.means,y.means,
                         overlay=FALSE,
                         ci.col=NULL,
                         dot.col="black",
+                        lwd.ci=1,
                        axes=TRUE,
                        main=NULL,...){
 
@@ -82,10 +83,12 @@ scatter.ci <- function(x.means,y.means,
   # confidence itnervals
     for (i in 1:length(x.means)){
       if (y.ci){
-        lines(rep(x.means[i],2),y.means[i]+multiplier*y.se[i],col=ci.col[i])
+        lines(rep(x.means[i],2),y.means[i]+multiplier*y.se[i],col=ci.col[i],
+              lwd=lwd.ci)
       }
       if (x.ci){
-        lines(x.means[i]+multiplier*x.se[i],rep(y.means[i],2),col=ci.col[i])
+        lines(x.means[i]+multiplier*x.se[i],rep(y.means[i],2),col=ci.col[i],
+              lwd=lwd.ci)
       }
     }
     par(new=T)

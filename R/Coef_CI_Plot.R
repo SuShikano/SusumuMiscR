@@ -11,6 +11,8 @@
 #' @param xlab specifies the label on the x-axis.
 #' @param var.lab.scale specifies the space for the variable labels. Default is 1. 
 #'          Larger values make the space larger, and vice versa.
+#' @param lwd.ci Line width of confidence intervals. Default is 1.
+#' @param y.positions Location on the y-axis. Default is NULL.
 #' @return Figure.
 #'
 # ---------------------------------------------------------------------------- #
@@ -21,6 +23,8 @@ coef.ci <- function(
   se,
   var.labels,
   var.lab.scale=1,
+  y.positions=NULL,
+  lwd.ci=1,
   main=NULL,
   xlab=NULL
 ){
@@ -32,7 +36,7 @@ coef.ci <- function(
   # load the scatter.ci function
   source("https://raw.githubusercontent.com/SuShikano/SusumuMiscR/main/R/Scatter_CI.R")
   
-  y.positions <- 1:length(estimates)
+  if (is.null(y.positions)) y.positions <- 1:length(estimates)
   y.se <- rep(1,length(y.positions))
   
   # setting the x-axis
@@ -61,7 +65,8 @@ coef.ci <- function(
              xlab=xlab,
              overlay=FALSE,
              main=main,
-             axes=FALSE
+             axes=FALSE,
+             lwd.ci=lwd.ci
              )
   axis(1,at=tick.x)
   text(min.x.axis0,y.positions,var.labels,pos=2)
