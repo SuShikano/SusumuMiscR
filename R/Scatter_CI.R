@@ -43,6 +43,7 @@ scatter.ci <- function(x.means,y.means,
                         ci.col=NULL,
                         dot.col="black",
                         lwd.ci=1,
+                         lty.ci = 1,
                        axes=TRUE,
                        main=NULL,...){
 
@@ -84,11 +85,11 @@ scatter.ci <- function(x.means,y.means,
     for (i in 1:length(x.means)){
       if (y.ci){
         lines(rep(x.means[i],2),y.means[i]+multiplier*y.se[i],col=ci.col[i],
-              lwd=lwd.ci)
+              lwd=lwd.ci,lty=lty.ci)
       }
       if (x.ci){
         lines(x.means[i]+multiplier*x.se[i],rep(y.means[i],2),col=ci.col[i],
-              lwd=lwd.ci)
+              lwd=lwd.ci,lty=lty.ci)
       }
     }
     par(new=T)
