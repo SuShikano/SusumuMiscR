@@ -41,7 +41,7 @@ scatter.ci <- function(x.means,y.means,
                         overlay=FALSE,
                         ci.col=NULL,
                         dot.col="black",
-                       main="",...){
+                       main=NULL,...){
 
   if(length(x.means)!=length(x.means)){
     stop("The length of mean vectors is not identical.")
@@ -72,7 +72,7 @@ scatter.ci <- function(x.means,y.means,
 
   if (overlay){
     plot(0,0,
-         ylim=ylim,xlim=xlim,type="n",axes=F,ann=FALSE)
+         ylim=ylim,xlim=xlim,type="n",axes=FALSE,ann=FALSE)
   }else{
     plot(0,0,ylab=ylab,xlab=xlab,main=main,
          ylim=ylim,xlim=xlim,type="n")
