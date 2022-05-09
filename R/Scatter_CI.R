@@ -1,12 +1,16 @@
 # ---------------------------------------------------------------------------- #
 # ##############################################################################
 # ##############################################################################
-#' This function makes a scatter plot with confidence intervals
+#' This function makes a scatter plot with confidence intervals on x and y axes.
 #'
 #' @param x.means A vector representing the means on the x-axis.
 #' @param y.means A vector representing the means on the y-axis.
 #' @param x.se A vector representing the standard errors on the x-axis.
 #' @param y.se A vector representing the standard errors on the y-axis.
+#' @param x.ci Logical. If FALSE, confidence intervals on x-axis do not appear. 
+#'        Default is TRUE.
+#' @param y.ci Logical. If FALSE, confidence intervals on y-axis do not appear. 
+#'        Default is TRUE.
 #' @param xlim Range of the x-axis.
 #' @param ylim Range of the y-axis.
 #' @param xlab Label for the x-axis.
@@ -29,6 +33,7 @@
 # ##############################################################################
 scatter.ci <- function(x.means,y.means,
                        x.se,y.se,
+                       x.ci=TRUE,y.ci=TRUE,
                        ci.percent=0.95,
                        pch=20,
                         xlab="",ylab="",
@@ -74,8 +79,12 @@ scatter.ci <- function(x.means,y.means,
   }
   # confidence itnervals
     for (i in 1:length(x.means)){
-      lines(rep(x.means[i],2),y.means[i]+multiplier*y.se[i],col=ci.col[i])
-      lines(x.means[i]+multiplier*x.se[i],rep(y.means[i],2),col=ci.col[i])
+      if (y.ci){
+        lines(rep(x.means[i],2),y.means[i]+multiplier*y.se[i],col=ci.col[i])
+      }
+      if (x.ci){
+        lines(x.means[i]+multiplier*x.se[i],rep(y.means[i],2),col=ci.col[i])
+      }
     }
     par(new=T)
     plot(x.means,y.means,pch=pch,ylim=ylim,xlim=xlim,axes=F,ann=F,col=dot.col)
