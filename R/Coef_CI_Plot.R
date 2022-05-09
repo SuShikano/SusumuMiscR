@@ -25,9 +25,14 @@ coef.ci <- function(
   var.lab.scale=1,
   y.positions=NULL,
   lwd.ci=1,
+  lty.ci=1,
+  ci.col=NULL,
   main=NULL,
   xlab=NULL,
-  overlay=FALSE
+  overlay=FALSE,
+  xlim=NULL,
+  ylim=NULL,
+  xylim.output =FALSE
 ){
   # some checks
   if(length(estimates)!=length(se)){
@@ -55,22 +60,30 @@ coef.ci <- function(
   ## where tick-marks?
   tick.x <- seq(round(min.x.axis0),round(max.x.axis))
   
-  scatter.ci(x.means=estimates,
-             y.means=y.positions,
-             x.se = se,
-             y.se = y.se,
-             x.ci=TRUE,
-             y.ci=FALSE,
-             ylim=c(max(y.positions),min(y.positions)),
-             xlim=c(min.x.axis,max.x.axis),
-             xlab=xlab,
-             overlay=overlay,
-             main=main,
-             axes=FALSE,
-             lwd.ci=lwd.ci
-             )
-  axis(1,at=tick.x)
-  text(min.x.axis0,y.positions,var.labels,pos=2)
+  if (is.null(xlim)) xlim <- c(min.x.axis,max.x.axis)
+  if (is.null(ylim)) ylim <- c(max(y.positions),min(y.positions))
   
+  if (xylim.output){
+    list(xlim=xlim,ylim=ylim)
+  }else {
+    scatter.ci(x.means=estimates,
+               y.means=y.positions,
+               x.se = se,
+               y.se = y.se,
+               x.ci=TRUE,
+               y.ci=FALSE,
+               ylim=ylim,
+               xlim=xlim,
+               xlab=xlab,
+               overlay=overlay,
+               main=main,
+               axes=FALSE,
+               lwd.ci=lwd.ci,
+               lty.ci=lty.ci,
+               ci.col=ci.col
+    )
+    axis(1,at=tick.x)
+    if (!overlay) text(min.x.axis0,y.positions,var.labels,pos=2)
+  }
 }
   
