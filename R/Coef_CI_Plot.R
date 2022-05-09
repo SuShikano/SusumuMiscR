@@ -26,7 +26,8 @@ coef.ci <- function(
   y.positions=NULL,
   lwd.ci=1,
   main=NULL,
-  xlab=NULL
+  xlab=NULL,
+  overlay=FALSE
 ){
   # some checks
   if(length(estimates)!=length(se)){
@@ -63,7 +64,7 @@ coef.ci <- function(
              ylim=c(max(y.positions),min(y.positions)),
              xlim=c(min.x.axis,max.x.axis),
              xlab=xlab,
-             overlay=FALSE,
+             overlay=overlay,
              main=main,
              axes=FALSE,
              lwd.ci=lwd.ci
