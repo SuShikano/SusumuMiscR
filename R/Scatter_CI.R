@@ -15,6 +15,7 @@
 #' @param ylim Range of the y-axis.
 #' @param xlab Label for the x-axis.
 #' @param ylab Label for the y-axis.
+#' @param axes Logical. If FALSE, no axes appear. Defalt is TRUE.
 #' @param main Title over the figure.
 #' @param pch Type of dotts. Default is 20.
 #' @param ci.col Color of confidence intervals. Default is grey(.7).
@@ -41,6 +42,7 @@ scatter.ci <- function(x.means,y.means,
                         overlay=FALSE,
                         ci.col=NULL,
                         dot.col="black",
+                       axes=TRUE,
                        main=NULL,...){
 
   if(length(x.means)!=length(x.means)){
@@ -71,10 +73,10 @@ scatter.ci <- function(x.means,y.means,
   }
 
   if (overlay){
-    plot(0,0,
-         ylim=ylim,xlim=xlim,type="n",axes=FALSE,ann=FALSE)
+      plot(0,0,
+           ylim=ylim,xlim=xlim,type="n",axes=FALSE,ann=FALSE)
   }else{
-    plot(0,0,ylab=ylab,xlab=xlab,main=main,
+    plot(0,0,ylab=ylab,xlab=xlab,main=main,axes=axes,
          ylim=ylim,xlim=xlim,type="n")
   }
   # confidence itnervals
