@@ -2,8 +2,9 @@
 #' Make a statistics table
 #'
 #' @param dist Distribution
-#' @param prob
-#' @param df
+#' @param prob specifies which percentile will be printed. 
+#'        Default is c( 0.1 , 0.05 , 0.025 , 0.01 , 0.005 ).
+#' @param df degrees of freedom (if needed)
 #' @return
 # ---------------------------------------------------------------------------- #
 stat.table <- function(dist="t",
