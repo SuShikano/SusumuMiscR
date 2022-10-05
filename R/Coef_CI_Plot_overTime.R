@@ -22,12 +22,13 @@ coef.ci.time <- function(
     estimates,
     se,
     timepoints,
+    x.positions=NULL,
     var.lab.scale=1,
     lwd.ci=1,
     lty.ci=1,
     ci.col=NULL,
     main=NULL,
-    xlab=NULL,
+    ylab=NULL,
     overlay=FALSE,
     xlim=NULL,
     ylim=NULL,
@@ -46,6 +47,9 @@ coef.ci.time <- function(
   
   # load the scatter.ci function
   source("https://raw.githubusercontent.com/SuShikano/SusumuMiscR/main/R/Scatter_CI.R")
+  
+  
+  if (is.null(x.positions)) x.positions <- timepoints
   
   x.se <- rep(1,length(timepoints))
   
@@ -69,14 +73,14 @@ coef.ci.time <- function(
     list(xlim=xlim,ylim=ylim)
   }else {
     scatter.ci(y.means=estimates,
-               x.means=timepoints,
+               x.means=x.positions,
                y.se = se,
                x.se = x.se,
                x.ci=FALSE,
                y.ci=TRUE,
                ylim=ylim,
                xlim=xlim,
-               xlab=xlab,
+               ylab=ylab,
                overlay=overlay,
                main=main,
                axes=FALSE,
@@ -85,6 +89,7 @@ coef.ci.time <- function(
                ci.col=ci.col
     )
     axis(2,at=tick.y)
-    if (!overlay) text(min.y.axis,timepoints,timepoints,pos=2)
+    #if (!overlay) text(min.y.axis,timepoints,timepoints,pos=2)
+    axis(1,at=timepoints)
   }
 }
