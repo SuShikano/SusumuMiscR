@@ -55,11 +55,11 @@ coef.ci.time <- function(
   
   # setting the y-axis
   ## maximum value 
-  max.y.axis <- max(estimates + se*2.5)
+  max.y.axis <- max(estimates + se*2.5,na.rm=T)
   if (max.y.axis<0) max.y.axis<- 0
   
   ## minimum value 
-  min.y.axis <- min(estimates - se*2.5)
+  min.y.axis <- min(estimates - se*2.5,na.rm=T)
   if (min.y.axis > 0) min.y.axis <- 0
   y.range <- max.y.axis - min.y.axis
   
