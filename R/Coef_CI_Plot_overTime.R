@@ -22,6 +22,7 @@ coef.ci.time <- function(
     estimates,
     se,
     timepoints,
+    tp.labels=NULL,
     x.positions=NULL,
     var.lab.scale=1,
     lwd.ci=1,
@@ -50,6 +51,7 @@ coef.ci.time <- function(
   
   
   if (is.null(x.positions)) x.positions <- timepoints
+  if (is.null(tp.labels)) tp.labels <- timepoints
   
   x.se <- rep(1,length(timepoints))
   
@@ -90,6 +92,6 @@ coef.ci.time <- function(
     )
     axis(2,at=tick.y)
     #if (!overlay) text(min.y.axis,timepoints,timepoints,pos=2)
-    axis(1,at=timepoints)
+    axis(1,at=timepoints,tp.labels)
   }
 }
