@@ -30,6 +30,7 @@ coef.ci <- function(
   main=NULL,
   xlab=NULL,
   overlay=FALSE,
+  tick.x=NULL,
   xlim=NULL,
   ylim=NULL,
   xylim.output =FALSE
@@ -58,7 +59,7 @@ coef.ci <- function(
   
   min.x.axis <- min.x.axis0 - max.length.label*x.range*0.02*var.lab.scale
   ## where tick-marks?
-  tick.x <- seq(round(min.x.axis0),round(max.x.axis))
+  if (is.null(tick.x)) tick.x <- seq(round(min.x.axis0),round(max.x.axis))
   
   if (is.null(xlim)) xlim <- c(min.x.axis,max.x.axis)
   if (is.null(ylim)) ylim <- c(max(y.positions),min(y.positions))
