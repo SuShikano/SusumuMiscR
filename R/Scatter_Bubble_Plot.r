@@ -24,10 +24,14 @@ bubble.plot <- function(x.var,y.var,
                         add=FALSE,
                         axes=TRUE,
                         bubble.size=.4,
+                        log=FALSE,
+                        log10=FALSE,
                         ...){
   tab <- table(x.var,y.var) # Hier x- und y-Achse
   tab <- as.data.frame(tab)
   tab[tab[,3]==0,3] <- NA
+  if (log) tab[,3] <- log(tab[,3])
+  if (log10) tab[,3] <- log10(tab[,3])
   if (is.null(xlim)) xlim <- range(x.var,na.rm=T)
   if (is.null(ylim)) ylim <- range(y.var,na.rm=T)
   symbols(as.numeric(as.character(tab[,1])),as.numeric(as.character(tab[,2])),
