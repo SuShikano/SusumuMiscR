@@ -48,13 +48,13 @@ coef.ci <- function(
   
   # setting the x-axis
   ## maximum value 
-  max.x.axis <- max(estimates + se*2.5)
+  max.x.axis <- max(estimates + se*2.5,na.rm=T)
   if (max.x.axis<0) max.x.axis<- 0
   
   ## minimum value (room for the labels!)
-  min.x.axis0 <- min(estimates - se*2.5)
+  min.x.axis0 <- min(estimates - se*2.5,na.rm=T)
   if (min.x.axis0 > 0) min.x.axis0 <- 0
-  max.length.label <- max(nchar(var.labels))
+  max.length.label <- max(nchar(var.labels),na.rm=T)
   x.range <- max.x.axis - min.x.axis0
   
   min.x.axis <- min.x.axis0 - max.length.label*x.range*0.02*var.lab.scale
