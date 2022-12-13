@@ -25,6 +25,7 @@ coef.ci.time <- function(
     tp.labels=NULL,
     x.positions=NULL,
     var.lab.scale=1,
+    pch=20,
     lwd.ci=1,
     lty.ci=1,
     ci.col=NULL,
@@ -88,7 +89,8 @@ coef.ci.time <- function(
                axes=FALSE,
                lwd.ci=lwd.ci,
                lty.ci=lty.ci,
-               ci.col=ci.col
+               ci.col=ci.col,
+               pch=pch
     )
     axis(2,at=tick.y)
     #if (!overlay) text(min.y.axis,timepoints,timepoints,pos=2)
