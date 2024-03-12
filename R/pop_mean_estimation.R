@@ -16,6 +16,7 @@
 pop.mean.estimation <- function(x,
                                 perc.ci=0.95,
                                 pop.var=NULL,
+                                only.ci=FALSE,
                                 print=TRUE){
   
   x.original <- x
@@ -59,6 +60,9 @@ pop.mean.estimation <- function(x,
                  se = standard.err,
                  ci = c(lower.bound,upper.bound)
   )
+  if (only.ci){
+    output <- c(lower.bound,upper.bound)
+  }
   
   output 
   
