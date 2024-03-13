@@ -33,7 +33,8 @@ coef.ci <- function(
   tick.x=NULL,
   xlim=NULL,
   ylim=NULL,
-  xylim.output =FALSE
+  xylim.output =FALSE,
+  pch=20
 ){
   # some checks
   if(length(estimates)!=length(se)){
@@ -81,6 +82,7 @@ coef.ci <- function(
                axes=FALSE,
                lwd.ci=lwd.ci,
                lty.ci=lty.ci,
+               pch=pch,
                ci.col=ci.col
     )
     axis(1,at=tick.x)
