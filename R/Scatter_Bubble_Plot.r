@@ -26,6 +26,7 @@ bubble.plot <- function(x.var,y.var,
                         bubble.size=.4,
                         log=FALSE,
                         log10=FALSE,
+                        main=NULL,
                         ...){
   tab <- table(x.var,y.var) # Hier x- und y-Achse
   tab <- as.data.frame(tab)
@@ -40,6 +41,7 @@ bubble.plot <- function(x.var,y.var,
          xlim=xlim,ylim=ylim,
          fg=col,bg=filling.col,
          add=add,
-         axes=axes
+         axes=axes,
+         main=main
          )
 }
