@@ -42,12 +42,13 @@ wide2long <- function(data, choice, id, alt.specific.vars = list(), alt.labels =
                        idvar = id,
                        direction = "long")
   
-  # Assign correct choice values based on the original data
+  # Convert alternative index to factor with correct labels
+  long.data$alternative <- factor(long.data$alternative, labels = alt.labels)
+
+    # Assign correct choice values based on the original data
   choice.match <- data[[choice]][match(long.data[[id]], data[[id]])]  # Retrieve correct choice values
   long.data$choice <- as.numeric(long.data$alternative == choice.match)
   
-  # Convert alternative index to factor with correct labels
-  long.data$alternative <- factor(long.data$alternative, labels = alt.labels)
   
   # Sort for clarity
   long.data <- long.data[order(long.data[[id]], long.data$alternative), ]

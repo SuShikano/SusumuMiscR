@@ -7,7 +7,7 @@ clogit <- function(formula, data, group_var, alt_var) {
   # Create Alternative-Specific Constants (ASCs)
   alt_levels <- unique(data[[alt_var]])
   asc_matrix <- model.matrix(~ factor(data[[alt_var]]) - 1)  # Create dummies for alternatives
-  X <- cbind(asc_matrix, X)  # Combine ASCs with predictors
+  X <- cbind(asc_matrix[,-1], X[,-1])  # Combine ASCs with predictors
   
   # Extract group information (each choice set)
   groups <- data[[group_var]]
