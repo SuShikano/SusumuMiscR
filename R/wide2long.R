@@ -1,5 +1,20 @@
+# ---------------------------------------------------------------------------- #
+# ##############################################################################
+# ##############################################################################
+#' This function reformat a wide-format data in the long-format.
+#'
+#' @param data Data in the wide format.
+#' @param choice Choice variable.
+#' @param id Respondent ID.
+#' @param alt.specific.vars The list of alternative specific variables
+#' @param alt.labels
+#' @return Data in the long format.
+#' @examples
+# ---------------------------------------------------------------------------- #
+# ##############################################################################
+# ##############################################################################
 wide2long <- function(data, choice, id, alt.specific.vars = list(), alt.labels = NULL) {
-  # Ensure the choice variable exists in the dataset
+  # Does the choice variable exist in the dataset?
   if (!(choice %in% names(data))) {
     stop("The choice variable must be a column in the dataset.")
   }
