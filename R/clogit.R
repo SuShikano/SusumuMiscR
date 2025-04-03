@@ -1,7 +1,7 @@
 # ---------------------------------------------------------------------------- #
 # ##############################################################################
 # ##############################################################################
-#' This function creates the empirical (cumulative) distribution function
+#' This function estimated the conditional logit models.
 #'
 #' @param formular 
 #' @param data Data in long format. To create this data, 
