@@ -14,7 +14,9 @@ triangle.plot <- function(raw.values,
                           title="",
                           col="black",
                           pch=1,
-                          label.space = 1){
+                          label.space = 1,
+                          cex=1,
+                          ...){
    raw.sum <- apply(raw.values,1,sum)
    values <- raw.values / raw.sum
    horizontal <- (values[,2]-values[,1])*100
@@ -27,7 +29,8 @@ triangle.plot <- function(raw.values,
                    #xlab=paste(label[1],"<-    ->",label[2]),ylab=paste("->",label[3]),
                    main=title,axes=F,
                    col=col,
-                  pch=pch)
+                  pch=pch,
+        cex=cex)
     lines(c(-100,0,100,-100),c(0,(sqrt(3)/2)*100,0,0))
     lines(rep(0,2),c(0,(sqrt(3)/2)*100),lty=2)
     lines(c(-100,50),c(0,(sqrt(3)/2)*50),lty=2)
